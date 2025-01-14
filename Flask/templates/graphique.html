@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+<div class="container-fluid h-100">
+    <div class="row h-100" style="margin-top: 10px;">
+        <div class="col-md-6 h-50">
+            <div class="card h-95">
+                <div class="card-body">
+                    <h6 class="card-title" style="color: #002B49;">Graphique en Camembert</h6>
+                    <div class="chart-container" style="position: relative; height: 85%;">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 h-50">
+            <div class="card h-95">
+                <div class="card-body">
+                    <h6 class="card-title" style="color: #002B49;">Graphique en Barres</h6>
+                    <div class="chart-container" style="position: relative; height: 85%;">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Espacement -->
+        <div style="height: 20px;"></div>
+
+        <div class="col-md-6 h-50">
+            <div class="card h-95">
+                <div class="card-body">
+                    <h6 class="card-title" style="color: #002B49;">Graphique Linéaire</h6>
+                    <div class="chart-container" style="position: relative; height: 85%;">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/pieChart.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/barChart.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lineChart.js') }}"></script>
+
+{% endblock %}

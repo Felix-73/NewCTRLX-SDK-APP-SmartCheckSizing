@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.boschrexroth.com/ctrlx-automation/ctrlx-core/apps/package-manifest/package-manifest.v1.3.schema.json",
+    "version": "1.0.0",
+    "id": "sample-web",
+        "services": {
+      "proxyMapping": [
+        {
+          "name": "sample-web-server",
+          "url": "/sample-web",
+          "binding": "unix://{$SNAP_DATA}/package-run/sample-web/example.sock"    
+        }
+      ]
+    },
+    "menus": {
+      "sidebar": [
+        {
+          "id": "sample-web-server",
+          "target": "_blank",
+          "title": "sample-web",
+          "icon": "bosch-ic-automation",
+          "link": "/sample-web"
+        }
+      ],
+      "settings": [
+      ],
+      "overview": [
+        {
+          "id": "sample-web-server",
+          "title": "sample-web",
+          "icon": "Bosch-Ic-worldwideweb",
+          "link": "/sample-web"
+        }
+      ]    
+    }
+  }

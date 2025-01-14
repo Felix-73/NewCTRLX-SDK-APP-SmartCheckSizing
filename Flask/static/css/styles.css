@@ -1,0 +1,46 @@
+/* NAVBAR */
+.navbar {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+}
+
+.text-custom {
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+.hover-underline {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #F7F7F7;
+    transition: all 0.3s ease;
+}
+
+.hover-underline:hover::after {
+    width: 80%;
+    left: 10%;
+}
+
+.nav-link:hover {
+    color: #F7F7F7 !important;
+}
+
+@media (max-width: 992px) {
+    .nav-link {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+}

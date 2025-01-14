@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Accueil - MonSite{% endblock %}
+
+{% block content %}
+<div class="container-fluid h-100 mt-4">
+    <!-- Premier row avec les textes -->
+    <div class="row" style="height: 38%;">
+        <!-- Premier texte -->
+        <div class="col-6 px-2">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2>Lorem ipsum 1</h2>
+                    <p>Et possimus aliquam eum voluptate possimus est inventore labore ut atque aliquid qui soluta aperiam. Quo ipsum sunt qui tempora quia et optio exercitationem id omnis minus sit error vitae vel quae quaerat.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deuxième texte -->
+        <div class="col-6 px-2">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2>Lorem ipsum 2</h2>
+                    <p>Et possimus aliquam eum voluptate possimus est inventore labore ut atque aliquid qui soluta aperiam. Quo ipsum sunt qui tempora quia et optio exercitationem id omnis minus sit error vitae vel quae quaerat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Espacement -->
+    <div style="height: 20px;"></div>
+
+    <!-- Line Chart -->
+    <div class="row" style="height: 52%;">
+        <div class="col-8 mx-auto">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title" style="color: #002B49;">Évolution des performances</h6>
+                    <div class="chart-container" style="position: relative; height: 90%;">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/homeLineChart.js') }}"></script>
+
+{% endblock %}

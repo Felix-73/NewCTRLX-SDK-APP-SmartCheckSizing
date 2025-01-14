@@ -1,0 +1,72 @@
+name: sample-web
+version: '1.0.0'
+base: core22
+summary: Sample to have a full webapp architecture serving on flask
+description: todo
+      
+confinement: strict
+grade: stable
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
+    
+apps:
+  flask-server: 
+    command: bin/runserver.wrapper  
+    plugs:
+      - network-control
+      - network-observe
+      - network
+      - network-bind
+      - home
+      - removable-media
+    daemon: simple 
+   
+
+parts:
+
+  flask:
+    plugin: python
+    build-environment:
+      - PYTHONPATH: "$SNAPCRAFT_PART_INSTALL/usr/lib/python3/dist-packages"
+    python-packages: 
+      - flask
+    source: .
+  
+  python-code: 
+    source: ./Flask/
+    plugin: dump
+    organize:
+      '*': bin/Flask/
+    prime:
+      - bin/Flask/static/**
+      - bin/Flask/templates/**
+      - bin/Flask/app.py
+
+
+  shscripts:  
+    source: ./shscripts/
+    plugin: dump
+    organize:
+      '*': bin/
+
+  configs:
+    plugin: dump
+    source: ./configs
+    organize:
+      'package-assets/*': package-assets/${SNAPCRAFT_PROJECT_NAME}/
+
+slots:
+  package-assets:
+    interface: content
+    content: package-assets
+    source:
+      read:
+        - $SNAP/package-assets/${SNAPCRAFT_PROJECT_NAME}
+  package-run:
+    interface: content
+    content: package-run
+    source:
+      write:
+        - $SNAP_DATA/package-run/${SNAPCRAFT_PROJECT_NAME}
