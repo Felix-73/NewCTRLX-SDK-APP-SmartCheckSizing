@@ -10,10 +10,14 @@ architectures:
   - build-on: amd64
   - build-on: arm64
 
-    
 apps:
   flask-server: 
-    command: bin/runserver.wrapper  
+    command: bin/runserver.wrapper
+    environment:
+      PYTHONPATH: $SNAP/lib/python3/site-packages:$SNAP/usr/lib/python3/dist-packages
+      BOSCH_API_URL: "https://192.168.1.1"
+      BOSCH_API_USERNAME: "boschrexroth"
+      BOSCH_API_PASSWORD: "boschrexroth"
     plugs:
       - network-control
       - network-observe
@@ -21,19 +25,23 @@ apps:
       - network-bind
       - home
       - removable-media
-    daemon: simple 
-   
+    daemon: simple
 
 parts:
-
   flask:
     plugin: python
     build-environment:
       - PYTHONPATH: "$SNAPCRAFT_PART_INSTALL/usr/lib/python3/dist-packages"
+    build-packages:
+      - python3-dev
     python-packages: 
       - flask
+      - requests
+      - werkzeug
+      - flask-sqlalchemy
+      - flask-socketio
     source: .
-  
+
   python-code: 
     source: ./Flask/
     plugin: dump
@@ -43,7 +51,7 @@ parts:
       - bin/Flask/static/**
       - bin/Flask/templates/**
       - bin/Flask/app.py
-
+      - bin/Flask/api/**
 
   shscripts:  
     source: ./shscripts/
