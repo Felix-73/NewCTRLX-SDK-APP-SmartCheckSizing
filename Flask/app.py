@@ -1,8 +1,11 @@
-from flask import Flask, redirect, render_template, request, session, url_for, Response, Blueprint
-
+from flask import Flask, redirect, render_template, request, session, url_for, Response, Blueprint, jsonify
 import os
 from werkzeug.serving import run_simple
 from werkzeug.middleware.proxy_fix import ProxyFix
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime 
+from api.boschrexrothAPI import BoschrexrothAPI, BoschrexrothAPIConfig
+from flask_socketio import SocketIO, emit
 
 
 # Déterminer les chemins en fonction de l'environnement
@@ -22,16 +25,68 @@ app = Flask(__name__,
            template_folder=TEMPLATE_FOLDER,
            static_url_path='/sample-web/static')
 
-# Debug des chemins
-print("Static folder:", app.static_folder)
-print("Template folder:", app.template_folder)
-
+#proxy
 app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
 )
 
+# DATABASE
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SECRET_KEY']= "my super secret key"
+# db = SQLAlchemy(app)
 
-########## serving functions
+# class Users(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(200), nullable=False)
+#     email = db.Column(db.String(120), nullable=False)
+#     date_added = db.Column(db.DateTime, default=datetime.utcnow)
+
+#     def __repr__(self):
+#         return '<name %r>' % self.name
+    
+# # Créer les tables
+# with app.app_context():
+#     db.create_all()
+
+##################### API BOSCHREXROTH ##########################
+
+
+# Initialisation de l'API Bosch
+config = BoschrexrothAPIConfig(
+    base_url="https://192.168.1.1",
+    username="boschrexroth",
+    password="boschrexroth"
+)
+bosch_api = BoschrexrothAPI(config)
+
+@app.route('/sample-web/api/drives', methods=['GET'])
+def get_drives():
+    try:
+        drives = bosch_api.get_drive_name()
+        return jsonify({'success': True, 'data': drives})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/sample-web/api/drives/<value>', methods=['PUT'])
+def set_drive(value):
+    try:
+        response = bosch_api.set_drive_value(value)
+        return jsonify({'success': True, 'data': response})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/sample-web/api/movement-data', methods=['GET'])
+@app.route('/sample-web/api/movement-data/<data_type>', methods=['GET'])
+def get_movement_data(data_type=None):
+    try:
+        data = bosch_api.get_data_mouvement(data_type)
+        return jsonify({'success': True, 'data': data})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+##################### FRONT VISU ########################
 
 @app.route('/sample-web')
 def index():
@@ -45,7 +100,9 @@ def page1():
 def page2():
     return render_template('graphique.html')
 
-##server start
+########################
+# Main
+########################
 
 if __name__ == '__main__':
   
