@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scalling.css') }}">
+
+<div class="wrapper">
+    <div class="container-scalling">
+        <div class="image">
+            <img src="{{ url_for('static', filename='image/scalling.png') }}" alt="Scaling">
+            <input type="number" class="text-block1" id="rInput" value="1">
+            <input type="number" class="text-block2" id="rOutput" value="1">
+            <input type="number" class="text-block3" id="FeedConstant" value="10">
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/accueil/scalling.js') }}"></script>
+{% endblock %}

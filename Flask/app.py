@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
 from api.boschrexrothAPI import BoschrexrothAPI, BoschrexrothAPIConfig
 from flask_socketio import SocketIO, emit
+import json
 
 
 # Déterminer les chemins en fonction de l'environnement
@@ -85,6 +86,20 @@ def get_movement_data(data_type=None):
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
+@app.route('/sample-web/api/movement-data-exemples/<data_type>', methods=['GET'])
+def get_movement_data_example(data_type=None):
+    try:
+        file_path = f"./static/data/{data_type}"
+        if not data_type.endswith('.json'):
+            file_path += '.json'
+            
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+        return jsonify({'success': True, 'data': data})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 
 ##################### FRONT VISU ########################
 
@@ -99,6 +114,10 @@ def page1():
 @app.route('/sample-web/graphique')
 def page2():
     return render_template('graphique.html')
+
+@app.route('/sample-web/scalling')
+def scalling():
+    return render_template('scalling.html')
 
 ########################
 # Main

@@ -3,26 +3,58 @@
 {% block title %}Accueil - MonSite{% endblock %}
 
 {% block content %}
-
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-<script type="text/javascript" src="{{ url_for('static', filename='js/driveChoice.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/ChartPureData.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/accueil/driveChoice.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/accueil/ChartPureData.js') }}"></script>
 
-<div class="drive-container">
-    <h2>Sélection du Drive</h2>
-    <p>Afin de pouvoir échantilloner, il faut choisir le drive qu'on souhaite analyser.</p>
-    <select id="drivesSelect" onchange="updateDrive(this.value)">
-        <option value="">Sélectionnez un drive...</option>
-    </select>
-    <div id="statusMessage"></div>
-</div>
+<div class="container-fluid mt-3"> <!-- Réduit le margin-top -->
+    <div class="row">
+        <!-- Colonne gauche avec les 3 conteneurs -->
+        <div class="col-md-4">
+            <!-- Section sélection du drive -->
+            <div class="card mb-2"> 
+                <div class="card-body py-2"> 
+                    <h5 class="card-title mb-2">Sélection du Drive</h5> 
+                    <p class="card-text small mb-2">Afin de pouvoir échantilloner, il faut choisir le drive qu'on souhaite analyser.</p> <!-- Ajouté class small -->
+                    <select id="drivesSelect" class="form-select form-select-sm mb-1"> 
+                        <option value="">Sélectionnez un drive...</option>
+                    </select>
+                </div>
+            </div>
 
-<div class="chart-container">
-    <h2>Pas de maquette ? Mode démo</h2>
-</div>
+            <!-- Section mode démo -->
+            <div class="card mb-2">
+                <div class="card-body py-2"> 
+                    <h5 class="card-title mb-2">Mode démo</h5>
+                    <p class="card-text small mb-2">Si vous ne possédez pas la maquette associée, vous pouvez quand même utiliser l'application en mode démo.</p>
+                    <select id="exemple-select" class="form-select form-select-sm">
+                        <option value="">Sélectionnez un exemple...</option>
+                        <option value="exemple1">Exemple 1</option>
+                        <option value="exemple2">Exemple 2</option>
+                    </select>
+                </div>
+            </div>
 
-<!-- Container du graphique -->
-<div class="chart-container">
-    <canvas id="myChart"></canvas>
+            <!-- Section config -->
+            <div class="card mb-2">
+                <div class="card-body py-2">
+                    <h5 class="card-title mb-2">Scalling</h5>
+                    <p class="card-text small mb-2">Certains paramètres du drive ne peuvent pas être remonté automatiquement, merci de le faire ici.</p>
+                    <button onclick="window.location.href='/sample-web/scalling'" class="btn btn-outline-secondary btn-sm"> 
+                        Paramétrer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colonne droite avec le graphique -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
