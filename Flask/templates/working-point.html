@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/working-point/working-point.js') }}"></script>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-2"> 
+                <div class="card-body py-2"> 
+                    <h5 class="card-title mb-2">Sélection de la courbe moteur</h5> 
+                    <p class="card-text small mb-2">Selectionner les courbes venant d'indrasize</p> 
+                    <select id="Indrasize-Select" class="form-select form-select-sm mb-1" 
+                    data-base-path="{{ url_for('static', filename='data/') }}"> 
+                <option value="">Sélectionnez un couple moteur-drive...</option>
+                <option value="moteur1">Moteur 1</option>
+                <option value="moteur2">Moteur 2</option>
+            </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

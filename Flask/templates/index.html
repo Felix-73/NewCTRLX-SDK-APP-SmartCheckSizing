@@ -3,8 +3,6 @@
 {% block title %}Accueil - MonSite{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-<script type="text/javascript" src="{{ url_for('static', filename='js/accueil/driveChoice.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/accueil/ChartPureData.js') }}"></script>
 
 <div class="container-fluid mt-3"> <!-- Réduit le margin-top -->
@@ -15,7 +13,7 @@
             <div class="card mb-2"> 
                 <div class="card-body py-2"> 
                     <h5 class="card-title mb-2">Sélection du Drive</h5> 
-                    <p class="card-text small mb-2">Afin de pouvoir échantilloner, il faut choisir le drive qu'on souhaite analyser.</p> <!-- Ajouté class small -->
+                    <p class="card-text small mb-2">Afin de pouvoir échantilloner, il faut choisir le drive qu'on souhaite analyser.</p> 
                     <select id="drivesSelect" class="form-select form-select-sm mb-1"> 
                         <option value="">Sélectionnez un drive...</option>
                     </select>
@@ -31,6 +29,9 @@
                         <option value="">Sélectionnez un exemple...</option>
                         <option value="exemple1">Exemple 1</option>
                         <option value="exemple2">Exemple 2</option>
+                        <option value="exemple3">Exemple 3</option>
+                        <option value="exemple4">Exemple 4</option>
+                        <option value="exemple5">Exemple 5</option>
                     </select>
                 </div>
             </div>

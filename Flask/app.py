@@ -95,11 +95,10 @@ def get_movement_data_example(data_type=None):
             
         with open(file_path, 'r') as file:
             data = json.load(file)
-        return jsonify({'success': True, 'data': data})
+        return data
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
-
-
+    
 
 ##################### FRONT VISU ########################
 
@@ -107,9 +106,9 @@ def get_movement_data_example(data_type=None):
 def index():
     return render_template('index.html')
 
-@app.route('/sample-web/page1')
-def page1():
-    return render_template('page1.html')
+@app.route('/sample-web/working-point')
+def workingpoint():
+    return render_template('working-point.html')
 
 @app.route('/sample-web/graphique')
 def page2():
