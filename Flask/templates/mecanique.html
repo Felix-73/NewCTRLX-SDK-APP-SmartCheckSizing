@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/chart.js') }}"></script>
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-2"> 
+                <div class="card-body py-2"> 
+                    <h5 class="card-title mb-2">Courbe de référence</h5> 
+                    <p class="card-text small mb-2">Sauvegarder ou supprimer la courbe de référence</p>
+                    <button id="saveReference" class="btn btn-outline-secondary btn-sm me-2">Sauvegarder comme référence</button>
+                    <button id="clearReference" class="btn btn-outline-secondary btn-sm me-2">Supprimer la référence</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <button id="resetZoom" class="btn btn-outline-secondary btn-sm me-2">Réinitialiser le zoom</button>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/mecanique-check/mecanique-check.js') }}"></script>
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Accueil - MonSite{% endblock %}
+{% block title %}Smart Check Sizing{% endblock %}
 
 {% block content %}
 <script type="text/javascript" src="{{ url_for('static', filename='js/accueil/ChartPureData.js') }}"></script>
@@ -31,7 +31,6 @@
                         <option value="exemple2">Exemple 2</option>
                         <option value="exemple3">Exemple 3</option>
                         <option value="exemple4">Exemple 4</option>
-                        <option value="exemple5">Exemple 5</option>
                     </select>
                 </div>
             </div>
@@ -52,6 +51,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
+                    <button id="resetZoom" class="btn btn-outline-secondary btn-sm me-2'">Réinitialiser le zoom</button>
                     <canvas id="myChart"></canvas>
                 </div>
             </div>

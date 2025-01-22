@@ -194,6 +194,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
+    document.getElementById('resetZoom').addEventListener('click', () => {
+        if (currentChart) {
+            currentChart.resetZoom();
+        }
+    });
     // Initialisation et gestion des événements
     await updateChart(lastSelectedMotor);
     
@@ -202,13 +207,4 @@ document.addEventListener('DOMContentLoaded', async function() {
         localStorage.setItem('lastSelectedMotor', selectedMotor);
         await updateChart(selectedMotor);
     });
-
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'chart-controls mb-2';
-    const resetZoomBtn = document.createElement('button');
-    resetZoomBtn.textContent = 'Réinitialiser Zoom';
-    resetZoomBtn.className = 'btn btn-outline-secondary btn-sm me-2';
-    resetZoomBtn.onclick = () => currentChart.resetZoom();
-    buttonContainer.appendChild(resetZoomBtn);
-    canvas.parentNode.insertBefore(buttonContainer, canvas);
 });

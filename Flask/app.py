@@ -110,9 +110,9 @@ def index():
 def workingpoint():
     return render_template('working-point.html')
 
-@app.route('/sample-web/graphique')
+@app.route('/sample-web/mecanique')
 def page2():
-    return render_template('graphique.html')
+    return render_template('mecanique.html')
 
 @app.route('/sample-web/scalling')
 def scalling():

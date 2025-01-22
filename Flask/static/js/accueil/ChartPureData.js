@@ -287,15 +287,10 @@ const ChartManager = {
     },
 
     addResetZoomButton() {
-        const existingButton = this.canvas.parentNode.querySelector('button');
-        if (existingButton) {
-            existingButton.remove();
+        const resetZoomButton = document.getElementById('resetZoom');
+        if (resetZoomButton) {
+            resetZoomButton.onclick = () => this.chart.resetZoom();
         }
-        const resetZoom = document.createElement('button');
-        resetZoom.textContent = 'Réinitialiser Zoom';
-        resetZoom.className = 'btn btn-outline-secondary btn-sm';
-        resetZoom.onclick = () => this.chart.resetZoom();
-        this.canvas.parentNode.insertBefore(resetZoom, this.canvas);
     }
 };
 
