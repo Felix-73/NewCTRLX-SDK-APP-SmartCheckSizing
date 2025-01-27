@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             const lastDemo = localStorage.getItem('lastDemoSelection');
             
             const movementData = await fetchData(lastMode === 'demo' ? 
-                `/sample-web/api/movement-data-exemples/${lastDemo}` : 
-                `/sample-web/api/movement-data`);
+                `/smart-check-sizing/api/movement-data-exemples/${lastDemo}` : 
+                `/smart-check-sizing/api/movement-data`);
 
             if (!movementData || !movementData.success) throw new Error('Données de mouvement non valides');
 

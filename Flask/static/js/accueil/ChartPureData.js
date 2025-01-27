@@ -18,11 +18,11 @@ const DataManager = {
 
     getDataUrl() {
         if (this.currentMode === 'demo') {
-            return `/sample-web/api/movement-data-exemples/${this.selectedDemo}`;
+            return `/smart-check-sizing/api/movement-data-exemples/${this.selectedDemo}`;
         }
         return this.selectedDrive 
-            ? `/sample-web/api/movement-data`
-            : '/sample-web/api/movement-data';
+            ? `/smart-check-sizing/api/movement-data`
+            : '/smart-check-sizing/api/movement-data';
     },
 
     setMode(mode, selection) {
@@ -50,7 +50,7 @@ const DataManager = {
             return JSON.parse(cachedData);
         }
 
-        const response = await fetch('/sample-web/api/drives');
+        const response = await fetch('/smart-check-sizing/api/drives');
         const data = await response.json();
 
         if (data.success) {
@@ -64,7 +64,7 @@ const DataManager = {
     async updateDrive(value) {
         if (!value) return;
         try {
-            const response = await fetch(`/sample-web/api/drives/${value}`, {
+            const response = await fetch(`/smart-check-sizing/api/drives/${value}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' }
             });

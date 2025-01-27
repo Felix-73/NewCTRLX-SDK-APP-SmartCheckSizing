@@ -3,7 +3,7 @@
 
 
 mkdir $SNAP_DATA/package-run
-mkdir $SNAP_DATA/package-run/sample-web
+mkdir $SNAP_DATA/package-run/smart-check-sizing
 
 cd $SNAP/bin/Flask/
 

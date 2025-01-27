@@ -24,7 +24,7 @@ else:
 app = Flask(__name__,
            static_folder=STATIC_FOLDER,
            template_folder=TEMPLATE_FOLDER,
-           static_url_path='/sample-web/static')
+           static_url_path='/smart-check-sizing/static')
 
 #proxy
 app.wsgi_app = ProxyFix(
@@ -61,7 +61,7 @@ config = BoschrexrothAPIConfig(
 )
 bosch_api = BoschrexrothAPI(config)
 
-@app.route('/sample-web/api/drives', methods=['GET'])
+@app.route('/smart-check-sizing/api/drives', methods=['GET'])
 def get_drives():
     try:
         drives = bosch_api.get_drive_name()
@@ -69,7 +69,7 @@ def get_drives():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
-@app.route('/sample-web/api/drives/<value>', methods=['PUT'])
+@app.route('/smart-check-sizing/api/drives/<value>', methods=['PUT'])
 def set_drive(value):
     try:
         response = bosch_api.set_drive_value(value)
@@ -77,8 +77,8 @@ def set_drive(value):
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
-@app.route('/sample-web/api/movement-data', methods=['GET'])
-@app.route('/sample-web/api/movement-data/<data_type>', methods=['GET'])
+@app.route('/smart-check-sizing/api/movement-data', methods=['GET'])
+@app.route('/smart-check-sizing/api/movement-data/<data_type>', methods=['GET'])
 def get_movement_data(data_type=None):
     try:
         data = bosch_api.get_data_mouvement(data_type)
@@ -86,7 +86,7 @@ def get_movement_data(data_type=None):
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
-@app.route('/sample-web/api/movement-data-exemples/<data_type>', methods=['GET'])
+@app.route('/smart-check-sizing/api/movement-data-exemples/<data_type>', methods=['GET'])
 def get_movement_data_example(data_type=None):
     try:
         file_path = f"./static/data/{data_type}"
@@ -102,19 +102,19 @@ def get_movement_data_example(data_type=None):
 
 ##################### FRONT VISU ########################
 
-@app.route('/sample-web')
+@app.route('/smart-check-sizing')
 def index():
     return render_template('index.html')
 
-@app.route('/sample-web/working-point')
+@app.route('/smart-check-sizing/working-point')
 def workingpoint():
     return render_template('working-point.html')
 
-@app.route('/sample-web/mecanique')
+@app.route('/smart-check-sizing/mecanique')
 def page2():
     return render_template('mecanique.html')
 
-@app.route('/sample-web/scalling')
+@app.route('/smart-check-sizing/scalling')
 def scalling():
     return render_template('scalling.html')
 
@@ -126,7 +126,7 @@ if __name__ == '__main__':
   
 
     if "SNAP_DATA" in os.environ:
-        run_simple('unix://'+os.environ['SNAP_DATA']+'/package-run/sample-web/example.sock', 0, app)
+        run_simple('unix://'+os.environ['SNAP_DATA']+'/package-run/smart-check-sizing/example.sock', 0, app)
         #app.run(host='0.0.0.0',debug = False, port=3125)
     else:
         app.run(host='0.0.0.0',debug = False, port=12121)

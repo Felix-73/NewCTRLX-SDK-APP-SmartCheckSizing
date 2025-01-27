@@ -1,5 +1,5 @@
-name: sample-web
-version: '1.0.0'
+name: smart-check-sizing
+version: '2.0.0'
 base: core22
 summary: Sample to have a full webapp architecture serving on flask
 description: todo
