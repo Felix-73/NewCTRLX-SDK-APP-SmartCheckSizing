@@ -79,18 +79,19 @@ document.addEventListener('DOMContentLoaded', async function() {
                     {
                         label: 'Courbe max rms',
                         data: moteurData.map(point => ({
-                            x: point.n,
-                            y: point.Mcont_result
+                            x: parseFloat(point['Axes[0].SpeedResultMaxTorque'].replace(',', '.')),
+                            y: parseFloat(point['Axes[0].ResultContTorque'].replace(',', '.'))
                         })),
                         backgroundColor: '#002B49',
                         borderColor: '#002B49',
                         showLine: true,
                         pointRadius: 0,
-                    },                    {
+                    },
+                    {
                         label: 'Courbe max point intermittents',
                         data: moteurData.map(point => ({
-                            x: point.n,
-                            y: point.Mmax_result
+                            x: parseFloat(point['Axes[0].SpeedResultMaxTorque'].replace(',', '.')),
+                            y: parseFloat(point['Axes[0].ResultMaxTorque'].replace(',', '.'))
                         })),
                         backgroundColor: '#00CCFF',
                         borderColor: '#00CCFF',
