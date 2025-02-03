@@ -118,6 +118,11 @@ def page2():
 def scalling():
     return render_template('scalling.html')
 
+@app.route('/smart-check-sizing/presentation')
+def presentation():
+    return render_template('presentation.html')
+
+
 ########################
 # Main
 ########################

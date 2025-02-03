@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/swiper-bundle.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/presentation.css') }}">
+
+<div class="wrapper">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive1.PNG') }}">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive2.PNG') }}">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive3.PNG') }}">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive4.PNG') }}">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive5.PNG') }}">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive6.PNG') }}">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive7.PNG') }}">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='image/Diapositive8.PNG') }}">
+            </div>
+        </div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/swiper-bundle.min.js') }}"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        keyboard: {
+            enabled: true,
+        },
+    });
+</script>
+
+{% endblock %}
