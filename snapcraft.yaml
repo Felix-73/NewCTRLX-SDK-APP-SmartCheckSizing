@@ -15,7 +15,7 @@ apps:
     command: bin/runserver.wrapper
     environment:
       PYTHONPATH: $SNAP/lib/python3/site-packages:$SNAP/usr/lib/python3/dist-packages
-      BOSCH_API_URL: "https://192.168.1.1"
+      BOSCH_API_URL: "https://localhost"
       BOSCH_API_USERNAME: "boschrexroth"
       BOSCH_API_PASSWORD: "boschrexroth"
     plugs:

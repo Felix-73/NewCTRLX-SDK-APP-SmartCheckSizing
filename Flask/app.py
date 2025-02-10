@@ -55,7 +55,7 @@ app.wsgi_app = ProxyFix(
 
 # Initialisation de l'API Bosch
 config = BoschrexrothAPIConfig(
-    base_url="https://192.168.1.1",
+    base_url="https://localhost",
     username="boschrexroth",
     password="boschrexroth"
 )

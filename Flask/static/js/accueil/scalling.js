@@ -1,4 +1,3 @@
-// Exécution immédiate pour initialiser les valeurs
 (function initializeValues() {
     const defaultValues = {
         'rInput': '1',
@@ -9,7 +8,6 @@
         'globalTorqueFactor': '0.003'
     };
 
-    // Initialiser les valeurs dans le localStorage si elles n'existent pas
     Object.entries(defaultValues).forEach(([key, value]) => {
         if (!localStorage.getItem(key)) {
             localStorage.setItem(key, value);
@@ -17,14 +15,19 @@
     });
 })();
 
-// Gestion des inputs une fois le DOM chargé
+
 document.addEventListener('DOMContentLoaded', function() {
-    ['rInput', 'rOutput', 'FeedConstant'].forEach(id => {
-        const input = document.getElementById(id);
+    const globalFactors = ['globalPositionFactor', 'globalSpeedFactor', 'globalTorqueFactor'];
+    
+    globalFactors.forEach(factorId => {
+        const input = document.getElementById(factorId);
         if (input) {
-            input.value = localStorage.getItem(id);
+            input.value = localStorage.getItem(factorId);
+            
             input.addEventListener('input', function() {
-                localStorage.setItem(id, this.value);
+                const formattedValue = parseFloat(this.value).toFixed(4);
+                localStorage.setItem(factorId, formattedValue);
+                this.value = formattedValue;
             });
         }
     });

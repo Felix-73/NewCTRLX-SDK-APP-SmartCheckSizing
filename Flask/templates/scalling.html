@@ -3,13 +3,30 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/scalling.css') }}">
 
-<div class="wrapper">
-    <div class="container-scalling">
-        <div class="image">
-            <img src="{{ url_for('static', filename='image/scalling.png') }}" alt="Scaling">
-            <input type="number" class="text-block1" id="rInput" value="1">
-            <input type="number" class="text-block2" id="rOutput" value="1">
-            <input type="number" class="text-block3" id="FeedConstant" value="10">
+<div class="page-container">
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='image/scalling.png') }}" alt="Scaling">
+    </div>
+    
+    <div class="card"> 
+        <div class="card-body"> 
+            <h5 class="card-title">Facteurs globaux</h5> 
+            <p class="card-text">Vous pouvez changer ici les facteurs du couple cerveau entrainement</p> 
+            
+            <div class="input-group">
+                <label for="globalPositionFactor">Position :</label>
+                <input type="number" id="globalPositionFactor">
+            </div>
+
+            <div class="input-group">
+                <label for="globalSpeedFactor">Vitesse :</label>
+                <input type="number" id="globalSpeedFactor" >
+            </div>
+
+            <div class="input-group">
+                <label for="globalTorqueFactor">Couple :</label>
+                <input type="number" id="globalTorqueFactor">
+            </div>
         </div>
     </div>
 </div>

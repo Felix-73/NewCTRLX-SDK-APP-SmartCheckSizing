@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 @dataclass
 class BoschrexrothAPIConfig:
     """Configuration pour l'API Boschrexroth"""
-    base_url: str = "https://192.168.1.1"
+    base_url: str = "https://localhost"
     username: str = "boschrexroth"
     password: str = "boschrexroth"
     verify_ssl: bool = False
