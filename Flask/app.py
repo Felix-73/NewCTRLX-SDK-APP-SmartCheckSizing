@@ -31,27 +31,6 @@ app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
 )
 
-# DATABASE
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['SECRET_KEY']= "my super secret key"
-# db = SQLAlchemy(app)
-
-# class Users(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(200), nullable=False)
-#     email = db.Column(db.String(120), nullable=False)
-#     date_added = db.Column(db.DateTime, default=datetime.utcnow)
-
-#     def __repr__(self):
-#         return '<name %r>' % self.name
-    
-# # Créer les tables
-# with app.app_context():
-#     db.create_all()
-
-##################### API BOSCHREXROTH ##########################
-
 
 # Initialisation de l'API Bosch
 config = BoschrexrothAPIConfig(
