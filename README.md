@@ -1,1 +1,2 @@
-# Smart check sizing
+# Smart check sizing app
+
