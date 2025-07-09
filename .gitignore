@@ -3,4 +3,5 @@ prime/
 stage/
 *.snap
 .venv
+venv
 __pycache__
