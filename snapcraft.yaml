@@ -2,7 +2,8 @@ name: smart-check-sizing
 version: '2.0.0'
 base: core22
 summary: todo
-description: https://github.com/Felix-73/NewCTRLX-SDK-APP-SmartCheckSizing
+description: The application enables graphical visualization of motor performance analysis and sizing, serving the purposes of visual comprehension, trend identification, and anomaly detection.
+  source code https://github.com/Felix-73/NewCTRLX-SDK-APP-SmartCheckSizing
       
 confinement: strict
 grade: stable
