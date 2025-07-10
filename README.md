@@ -65,16 +65,38 @@ Flask
 
 Pour utiliser cette application, il faut récupérer les données de couple, position et vitesse. Dans l'application, j'ai déja enregistré 4 cycles de mouvement dans [/Flask/static/data](Flask/static/data).
 Vous pouvez les utiliser et constater sur les autres pages les impacts que les cycles ont sur le point de fonctionnement et sur la mécanique. Si vous voulez utiliser l'application dans un cas concret, il va vous falloir télécharger une deuxième application [Sampler-Smart-check-sizing](https://github.com/Felix-73/CTRLX-SDK-APP-Sampler-Smart-check-sizing) 
-Cette application fonctionne en paire avec celle-ci et c'est elle qui fera l'aquisition des données remontées en ethercat.
+Cette application fonctionne en paire avec celle-ci et c'est elle qui fera l'acquisition des données remontées en ethercat.
 
 ![alt text](ReadmePic/acquisition.png)
 
+Une fois téléchargé, vous allez avoir des nouveaux noeuds dans la datalayer 
 
-## Comment la build 
+![alt text](ReadmePic/datalayer.png)
+
+Ces noeuds correspondent aux données qui seront remontées. Avant de lancer votre cycle, vous devez choisir sur quel drive vous voulez venir échantillonner. 
+
+![alt text](ReadmePic/modeReel.png)
+
+L'application Sampler-Smart-Check-Sizing viendra faire l'acquisition des données sur ces chemins 
+
+![alt text](ReadmePic/pathName.png)
+
+Puis elle viendra stocker en array les valeurs. sur les noeuds crées par l'app sampler
+
+Ce qui lancera l'aquisition c'est la variable boolFlag. C'est la seule partie à modifier dans le PLC
+
+
+## Comment build 
 - Git clone 
 - ```chmod 755 -R *```
 * ```./build-snap-amd64.sh``` ou ```./build-snap-arm64.sh```
 
+## Comment debug
+- ```python3 -m venv .venv```
+- ```. .venv/bin/activate```
+- ```pip install -r requierements.txt```
+- ```cd Flask```
+- ```flask run```
 
 ## Liens utiles 
 [Cours sur flask Openclassrooms](https://openclassrooms.com/fr/courses/4425066-concevez-un-site-avec-flask)
